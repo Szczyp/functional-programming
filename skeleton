@@ -1,0 +1,28 @@
+1. garbage collection
+2. generics
+3. lambda
+4. linq
+
+1. funkcje
+  - closure
+  - curring
+  - partial application
+  - first class value
+  - higher order functions
+2. expressions
+  - implicit return
+  - no loops
+3. immutability
+  - no assignment
+  - everything is value
+4. algebraic datatypes
+  - sum types discriminated unions
+  - product types records and tuples
+5. pattern matching
+  - match expression
+  - destructuring
+6. purity
+  - referential transparency
+  - no side effects
+7. type inference
+  - no verbose declarations
