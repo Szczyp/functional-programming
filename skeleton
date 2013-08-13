@@ -1,7 +1,8 @@
 1. garbage collection
-2. generics
-3. lambda
-4. linq
+2. immutability (string)
+3. generics
+4. lambda
+5. linq
 
 1. funkcje
   - closure
