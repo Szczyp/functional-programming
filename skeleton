@@ -2,7 +2,8 @@
 2. immutability (string)
 3. generics
 4. lambda
-5. linq
+5. type inference
+6. linq
 
 1. funkcje
   - closure
