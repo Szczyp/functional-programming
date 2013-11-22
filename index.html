@@ -115,6 +115,15 @@ var list = Enumerable.Range(0, 9).Where(i => i % 2 == 0).ToList();
       </section>
 
       <section>
+        <h3>Data</h3>
+        <ul>
+          <li>Types represent possible states rather than memory layout</li>
+          <li>Product types</li>
+          <li>Sum types</li>
+        </ul>
+      </section>
+
+      <section>
         <h3>Functions</h3>
         <ul>
           <li>Data transformation</li>
@@ -125,81 +134,10 @@ var list = Enumerable.Range(0, 9).Where(i => i % 2 == 0).ToList();
 
       <section>
         <h1>F#</h1>
-        <h3>Taste of syntax</h3>
+        <h3>Case study</h3>
       </section>
 
       <section>
-        <section>
-          <h2>let</h2>
-          <pre><code>let identifier = expression</code></pre>
-          <pre><code>let x = 1</code></pre>
-          <pre><code>let add a b = a + b</code></pre>
-        </section>
-        <section>
-          <h3>let != var</h3>
-          <pre><code data-trim>
-let x = 1
-x = 2 // not possible
-            </code></pre>
-        </section>
-      </section>
-
-      <section>
-        <section>
-          <h2>Functions</h2>
-          <pre><code data-trim>
-let add a b = a + b
-let x = add 2 4
-let add2 a = add 2 
-let y = add2 4
-x = y
-</code></pre>
-        </section>
-        <section>
-          <h3>Lambda</h3>
-          <pre><code data-trim>
-let f = fun x -> x * x
-let f' x = x * x
-</code></pre>
-          <pre><code data-trim>
-let hof f x y = if y = 0 then 0 else f (x/y) 
-let x = hof (fun x -> x+1) 4 2
-let y = hof (fun x -> x+1) 4 0
-</code></pre>
-        </section>
-      </section>
-
-      <section>
-        <h2>Algebraic Data Types</h2>
-        <p>Types represents possible values instead of defining memory layout</p>
-        <ul>
-          <li>Product types</li>
-          <li>Sum types</li>
-        </ul>
-      </section>
-
-      <section>
-        <section>
-          <h3>Product types</h3>
-          <h4>Tuple</h4>
-          <pre><code>let x = (1,2,"bar")</code></pre>
-          <pre><code>int * int * string</code></pre>
-        </section>
-        <section>
-          <h3>Product types</h3>
-          <h4>Records</h4>
-          <pre><code>type Person = { Name : string; Age : int }</code></pre>
-        </section>
-      </section>
-
-      <section>
-        <section>
-          <h3>Sum types - discriminated unions</h3>
-          <ul>
-            <li>Better than enums</li>
-            <li>Simplier than polymorphism</li>
-          </ul>
-        </section>
         <section>
           <pre><code data-trim>
 type BankAccount =
