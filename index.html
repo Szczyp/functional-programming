@@ -66,15 +66,15 @@
         <h3>Imperative style</h3>
         <p>Tell the machine how to do a thing</p>
         <pre>
-        <code data-trim>
+          <code data-trim>
 var list = new List&lt;int&gt;();
 for(int i = 0; i &lt; 10; i++)
 {
   if(i % 2 == 0)
     list.Add(i);
 }
-              </code>
-            </pre>
+          </code>
+        </pre>
       </section>
 
       <section>
@@ -88,47 +88,42 @@ var list = Enumerable.Range(0, 9).Where(i => i % 2 == 0).ToList();
       </section>
 
       <section>
-        <h3>Immutable data and functions over classes</h3>
-        <ul>
-          <li>Class = Data + Behaviour</li>
-          <li>Data = Types</li>
-          <li>Behaviour = Functions</li>
-        </ul>
+        <h1>Immutable data and functions over classes</h1>
       </section>
-      
-      <section>
-        <h3>Classes</h3>
-        <ul>
-          <li>Class = Data + Behaviour</li>
-          <li>Data is mutable</li>
-          <li>Coupled with behaviour for encapsulation</li>
-        </ul>
-      </section>       
 
       <section>
-        <h3>Immutability</h3>
+        <h2>Classes</h2>
         <ul>
-          <li>Without mutable state encapsulation is not needed</li>
-          <li>Passing around values is safe - they won't be changed</li>
-          <li>Simple concurrency</li>
+          <li class="fragment">Class = Data + Behaviour</li>
+          <li class="fragment">Data is mutable</li>
+          <li class="fragment">Coupled with behaviour for encapsulation</li>
         </ul>
       </section>
 
       <section>
-        <h3>Data</h3>
+        <h2>Data</h2>
         <ul>
-          <li>Types represent possible states rather than memory layout</li>
-          <li>Product types</li>
-          <li>Sum types</li>
+          <li class="fragment">Types represent possible states rather than memory layout</li>
+          <li class="fragment">Product types</li>
+          <li class="fragment">Sum types</li>
         </ul>
       </section>
 
       <section>
-        <h3>Functions</h3>
+        <h2>Immutability</h2>
         <ul>
-          <li>Data transformation</li>
-          <li>Composable</li>
-          <li>Also a data</li>
+          <li class="fragment">Without mutable state encapsulation is not needed</li>
+          <li class="fragment">Passing around values is safe - they won't be changed</li>
+          <li class="fragment">Simple concurrency</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Functions</h2>
+        <ul>
+          <li class="fragment">Data transformation</li>
+          <li class="fragment">Composable</li>
+          <li class="fragment">Also a data</li>
         </ul>
       </section>
 
@@ -240,7 +235,7 @@ class CallDeposit : BankAccount
   }
 
   public decimal CurrentBalance 
-  { 
+  {
     get { return balance + balance * rate; } 
   }
 }
@@ -253,18 +248,17 @@ type BankAccount =
        Current of decimal
      | TimeDeposit of balance:decimal * rate:float * term:DateTime
      | CallDeposit of balance:decimal * rate:float
-         </code></pre>    
+         </code></pre>
       </section>
 
-      <section>
-        <pre><code>
-let withdraw a = function
-    Current b -> Current(b-a)
-  | TimeDeposit(b,r,t) as td -> if DateTime.Now > t then TimeDeposit(b-a,r,t) else td
-  | CallDeposit(b,r) as cd -> if a <= b then CallDeposit(b-a,r) else cd
+<section>
+        <pre><code data-trim>
+let currentBalance = function
+    Current b -> b
+  | TimeDeposit(b,r,t) -> if DateTime.Now > t then b + b * r else b
+  | CallDeposit (b, r) -> b + b * r
 </code></pre>
         </section>
-
       <section>
         <pre><code data-trim>
 // BankAccount
@@ -291,6 +285,14 @@ public void Withdraw(decimal amount)
 }
           </code></pre>
       </section>
+      <section>
+        <pre><code data-trim>
+let withdraw a = function
+    Current b -> Current(b-a)
+  | TimeDeposit(b,r,t) as td -> if DateTime.Now > t then TimeDeposit(b-a,r,t) else td
+  | CallDeposit(b,r) as cd -> if a <= b then CallDeposit(b-a,r) else cd
+</code></pre>
+        </section>
 
     </div>
 
@@ -304,7 +306,7 @@ public void Withdraw(decimal amount)
     // Full list of configuration options available here:
     // https://github.com/hakimel/reveal.js#configuration
     Reveal.initialize({
-      controls: true,
+      controls: false,
       progress: true,
       history: true,
       center: true,
@@ -323,7 +325,12 @@ public void Withdraw(decimal amount)
         // { src: 'plugin/leap/leap.js', async: true }
         // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
         // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-      ]
+      ],
+
+      margin: 0.1,
+
+      minScale: 0.5,
+      maxScale: 1.5
     });
 
   </script>
