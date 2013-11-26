@@ -140,12 +140,12 @@ var list = Enumerable.Range(0, 9).Where(i => i % 2 == 0).ToList();
       <section>
         <section>
 <pre><code data-trim>
-abstract class Account
+abstract class BankAccount
 {
   protected decimal balance;
   public abstract decimal CurrentBalance { get; }
 
-  public Account (decimal balance)
+  public BankAccount (decimal balance)
   {
      this.balance = balance; 
   }
@@ -154,7 +154,7 @@ abstract class Account
           </section>
         <section>
           <pre><code data-trim>
-class Current : Account
+class Current : BankAccount
 {
   public decimal CurrentBalance { get { return balance; } }
   public Current (decimal balance)
@@ -166,7 +166,7 @@ class Current : Account
           </section>
         <section>
 <pre><code data-trim>
-class TimeDeposit : Account
+class TimeDeposit : BankAccount
 {
   float rate;
   DateTime term;
@@ -229,7 +229,7 @@ let currentBalance acc = match acc with
 
         <section>
           <pre><code data-trim>
-class CallDeposit : Account
+class CallDeposit : BankAccount
 {
   float rate;
 
@@ -267,7 +267,7 @@ let withdraw a = function
 
       <section>
         <pre><code data-trim>
-// Account
+// BankAccount
 public abstract void Withdraw(decimal amount);
 
 // Current
